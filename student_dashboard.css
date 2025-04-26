@@ -1,0 +1,162 @@
+/* ===== Top Bar Wrapper ===== */
+.topbar-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1050;
+  }
+  
+  /* ===== Top Title Bar ===== */
+  .topbar-title {
+    background-color: #2C7CB3;
+    padding: 10px 0;
+    text-align: center;
+    color: #fff;
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  /* ===== Main Navbar Section ===== */
+  .topbar-main {
+    background-color: #3A89C9;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+  }
+  
+  /* ===== Content Wrapper (sidebar + content) ===== */
+  .content-wrapper {
+    display: flex;
+    transition: margin-left 0.3s ease;
+    margin-left: 0;
+    margin-top: 112px; /* height of topbar */
+  }
+  
+  /* ===== Sidebar Styling ===== */
+  .sidebar {
+    position: fixed;
+    top: 99px; /* Updated from 112px */
+    left: 0;
+    width: 250px;
+    height: calc(100% - 92px); /* Adjust height accordingly */
+    background-color: #3A89C9;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1049;
+}
+.notice-box {
+    background-color: #fff3cd;
+    color: #856404;
+    border-left: 5px solid #ffc107;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  
+  
+  /* Show Sidebar When Active */
+  .sidebar.active {
+    transform: translateX(0);
+  }
+  
+  /* When sidebar is active on large screen, push content */
+  .content-wrapper.sidebar-open {
+    margin-left: 250px;
+  }
+  
+  /* ===== Sidebar Menu Items ===== */
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar ul li {
+    padding: 15px;
+    border-bottom: 1px solid #fff;
+  }
+  
+  .sidebar ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .sidebar ul li a:hover {
+    background-color: #2C7CB3;
+  }
+  
+  /* ===== Main Content Area ===== */
+  .main-content {
+    padding: 20px;
+    width: 100%;
+  }
+  
+  /* ===== Cards ===== */
+  .info-card {
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  .card-icon img {
+    width: 70px;
+    height: 70px;
+    margin-top: 10px;
+    object-fit: contain;
+    transition: transform 0.4s ease, filter 0.3s ease;
+  }
+  
+  .card-icon img:hover {
+    transform: scale(1.15) rotate(5deg);
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+  }
+   
+  .card-icon img {
+    width: 70px;
+    height: 70px;
+    margin-top: 10px;
+    object-fit: contain;
+  }
+  
+  .card-footer {
+    font-size: 14px;
+    padding-top: 10px;
+  }
+  
+  /* ===== Responsive Tweaks ===== */
+  @media (max-width: 767px) {
+    .topbar-title {
+      font-size: 1.1rem;
+    }
+  
+    .topbar-main {
+      flex-direction: row;
+    }
+  
+    .topbar-main .dropdown strong {
+      font-size: 0.85rem;
+    }
+  
+    .navbar-toggler {
+      font-size: 1.4rem;
+    }
+  
+    /* Sidebar overlays content on mobile */
+    .sidebar {
+      width: 60%;
+      position: fixed;
+      transform: translateX(-100%);
+      z-index: 1051;
+    }
+  
+    .sidebar.active {
+      transform: translateX(0);
+    }
+  
+    .content-wrapper.sidebar-open {
+      margin-left: 0;
+    }
+  }
+  
