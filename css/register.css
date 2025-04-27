@@ -1,0 +1,139 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #F2C38B, #B35550);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top */
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px 0;
+}
+
+.register-container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 380px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Ensure heading is clearly visible */
+h2 {
+    color: #74353F;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Uniform Label Size */
+label {
+    width: 120px; /* Set a fixed width */
+    display: inline-block;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: left;
+    color: #74353F;
+    margin-top: 10px;
+}
+
+/* Input Styling */
+input, select {
+    padding: 10px;
+    margin-top: 5px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+input:focus, select:focus {
+    border-color: #B35550;
+    box-shadow: 0 0 8px rgba(179, 85, 80, 0.5);
+}
+
+/* Button Styling */
+button {
+    margin-top: 20px;
+    padding: 12px;
+    width: 100%;
+    background: #B35550;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #74353F;
+    transform: scale(1.05);
+}
+
+p a {
+    color: #B35550;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease, transform 0.2s;
+}
+
+/* Hover effect for "Login" link */
+p a:hover {
+    text-decoration: underline;
+    color: #74353F;
+    transform: scale(1.05);
+}
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.password-container input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.password-container .toggle-password {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #666;
+}
+
+p {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+
+/* Responsive Design */
+@media (max-width: 400px) {
+    .register-container {
+        width: 95%;
+    }
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

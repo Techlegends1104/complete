@@ -1,0 +1,297 @@
+/* Body styling */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #3A89C9, #002B5B);
+    min-height: 100vh;
+    padding: 20px;
+    color: white;
+}
+
+/* Main heading styling */
+.main-heading {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #FFD700;
+}
+
+/* Branch container styling */
+.branch-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Individual branch card styling */
+.branch-card {
+    position: relative;
+    background: #001F3F;
+    padding: 30px;
+    width: 280px;
+    text-align: center;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 0.8s forwards;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Animation delay for each card */
+.branch-card:nth-child(1) { animation-delay: 0s; }
+.branch-card:nth-child(2) { animation-delay: 0.2s; }
+.branch-card:nth-child(3) { animation-delay: 0.4s; }
+.branch-card:nth-child(4) { animation-delay: 0.6s; }
+
+/* Border effect animation for branch cards */
+.branch-card::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    right: -4px;
+    bottom: -4px;
+    background: linear-gradient(45deg, #00f, #0ff, #00f, #0ff);
+    background-size: 400% 400%;
+    animation: borderAnimation 8s linear infinite;
+    z-index: -1;
+    border-radius: 12px;
+}
+
+/* Inner border styling for branch cards */
+.branch-card::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    background: #001F3F;
+    border-radius: 8px;
+    z-index: -1;
+}
+
+/* Hover effect for branch card */
+.branch-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+}
+
+/* Fade-in animation for branch cards */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Blue border animation */
+@keyframes borderAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Book Section Styling */
+.book-section {
+    margin-top: 50px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+    text-align: center;
+}
+
+/* Book Section active class */
+.book-section.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Search container styling */
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Search input styling */
+#searchInput {
+    width: 50%;
+    padding: 12px;
+    margin-bottom: 2px;
+    margin-right: 10px; /* Space between input and button */
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+    background-color: #f0f0f0;
+}
+
+/* Search button styling */
+.search-button {
+    background-color: #3A89C9;
+    color: white;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* Hover effect for search button */
+.search-button:hover {
+    background-color: #005f99;
+}
+
+/* Book table styling */
+#bookTable {
+    width: 90%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background: white;
+    color: black;
+    border-radius: 8px;
+    overflow: hidden;
+    table-layout: fixed;
+}
+
+/* Table header and cell styling */
+#bookTable th, #bookTable td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    word-wrap: break-word;
+}
+
+/* Borrow button styling */
+.borrow-button {
+    background-color: #3A89C9;
+    color: #000;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* Hover effect for borrow button */
+.borrow-button:hover {
+    background-color: #005f99;
+}
+
+/* Initially hide the back button */
+.back-button {
+    display: none;
+    background-color: #3A89C9;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    position: fixed;
+    top: 100px;
+    left: 20px;
+    z-index: 1000;
+}
+
+/* Show back button when active */
+.back-button.active {
+    display: block;
+}
+
+/* Back button hover effect */
+.back-button:hover {
+    background-color: #005f99;
+}
+
+/* Media Queries for responsive design */
+/* Media Queries for screens up to 768px (tablet and below) */
+@media (max-width: 768px) {
+    /* Ensure the table is scrollable horizontally on smaller screens */
+    #bookTable {
+        width: 100%;
+        overflow-x: auto;
+        display: block;
+        -webkit-overflow-scrolling: touch;
+        table-layout: auto; /* Auto adjust the table layout */
+    }
+
+    /* Make the table header sticky for easier scrolling */
+    #bookTable th {
+        position: sticky;
+        top: 0;
+        background-color: #b5d5ef;
+        color: #000;
+        z-index: 1;
+    }
+
+    /* Adjust padding for table cells for mobile devices */
+    #bookTable th, #bookTable td {
+        padding: 10px 8px;
+        word-wrap: break-word; /* Ensure long words break and wrap into the next line */
+        min-width: 100px; /* Set a minimum width for cells */
+    }
+
+    /* Adjust branch card width for smaller screens */
+    .branch-card {
+        width: 90%;
+        padding: 20px;
+    }
+
+    /* Adjust the back button's position on mobile */
+    .back-button {
+        top: 10px;
+        left: 10px;
+    }
+
+    /* Adjust search input width for better mobile display */
+    #searchInput {
+        width: 80%;
+    }
+
+    /* Place search button below the input on mobile */
+    .search-container {
+        flex-direction: column;
+    }
+}
+
+/* Media Queries for very small screens (mobile phones below 480px) */
+@media (max-width: 480px) {
+    /* Reduce font size for main heading */
+    .main-heading {
+        font-size: 28px;
+    }
+
+    /* Adjust search input width for smaller devices */
+    #searchInput {
+        width: 80%;
+    }
+
+    /* Make the table fully responsive */
+    #bookTable {
+        width: 100%;
+        overflow-x: auto;
+        display: block;
+        table-layout: auto; /* Allow table layout adjustment */
+    }
+
+    /* Adjust padding for table cells on very small screens */
+    #bookTable th, #bookTable td {
+        padding: 8px 5px;
+        min-width: 80px; /* Ensure cells don’t shrink too much */
+    }
+
+    /* Adjust search button width on mobile */
+    .search-button {
+        width: 50%;
+        margin-top: 10px;
+    }
+}

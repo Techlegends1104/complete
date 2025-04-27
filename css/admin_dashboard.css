@@ -1,0 +1,224 @@
+/* ===== Top Bar Wrapper ===== */
+.topbar-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1050;
+}
+
+/* ===== Top Title Bar ===== */
+.topbar-title {
+  background-color: #2C7CB3;
+  padding: 10px 0;
+  text-align: center;
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* ===== Main Navbar Section ===== */
+.topbar-main {
+  background-color: #3A89C9;
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+}
+
+/* ===== Content Wrapper (sidebar + content) ===== */
+.content-wrapper {
+  display: flex;
+  transition: margin-left 0.3s ease;
+  margin-left: 0;
+  margin-top: 112px; /* height of topbar */
+}
+
+/* ===== Sidebar Styling ===== */
+.sidebar {
+  position: fixed;
+  top: 95px;
+  left: 0;
+  width: 250px;
+  height: calc(100% - 92px);
+  background-color: #3A89C9;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 1049;
+}
+
+/* Show Sidebar When Active */
+.sidebar.active {
+  transform: translateX(0);
+}
+
+/* When sidebar is active on large screen, push content */
+.content-wrapper.sidebar-open {
+  margin-left: 250px;
+}
+
+/* ===== Sidebar Menu Items ===== */
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  padding: 15px;
+  border-bottom: 1px solid #fff;
+}
+
+.sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
+.sidebar ul li a:hover {
+  background-color: #2C7CB3;
+}
+
+/* ===== Main Content Area ===== */
+.main-content {
+  padding: 20px;
+  width: 100%;
+}
+
+/* ===== Cards ===== */
+.info-card {
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.card-icon img {
+  width: 70px;
+  height: 70px;
+  margin-top: 10px;
+  object-fit: contain;
+  transition: transform 0.4s ease, filter 0.3s ease;
+}
+
+.card-icon img:hover {
+  transform: scale(1.15) rotate(5deg);
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+}
+
+/* ===== Profile Section Styling ===== */
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #3A89C9;
+}
+
+.profile-section img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+  background: #fff;
+  padding: 5px;
+}
+
+.profile-section h4 {
+  margin: 5px 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.profile-section p {
+  color: #00FF00;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* ===== Profile Dropdown and Sign-out Button Styling ===== */
+.profile-dropdown, .signout-btn {
+  position: relative;
+  z-index: 1000;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.profile-dropdown ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profile-dropdown ul li {
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.profile-dropdown ul li:last-child {
+  border-bottom: none;
+}
+
+.profile-dropdown ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.profile-dropdown ul li a:hover {
+  background-color: #f5f5f5;
+  display: block;
+}
+
+/* ===== Notice Box Styling ===== */
+.notice-box {
+  background-color: #fff3cd;
+  color: #856404;
+  border-left: 5px solid #ffc107;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  padding: 10px;
+}
+/* Force dropdown menu to be above everything */
+/* ===== Responsive Tweaks ===== */
+@media (max-width: 767px) {
+  .topbar-title {
+    font-size: 1.1rem;
+  }
+
+  .topbar-main {
+    flex-direction: row;
+  }
+
+  .topbar-main .dropdown strong {
+    font-size: 0.85rem;
+  }
+
+  .navbar-toggler {
+    font-size: 1.4rem;
+  }
+
+  .sidebar {
+    width: 60%;
+    position: fixed;
+    transform: translateX(-100%);
+    z-index: 1051;
+  }
+  .sidebar.active {
+    transform: translateX(0);
+  }
+
+  .content-wrapper.sidebar-open {
+    margin-left: 0;
+  }
+
+  .profile-dropdown, .signout-btn {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    z-index: 1000;
+  }
+}

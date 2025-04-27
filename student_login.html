@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>  
+    <div class="register-container">
+        <h2 class="blink">Student pannel</h2>
+        <form action="login.php" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required/>
+            
+            <label for="password">Password:</label>
+            <div class="password-container">
+                <input type="password" id="password" name="password" placeholder="Enter your password" required oninput="checkPasswordStrength()">
+                <span class="toggle-password" onclick="togglePassword('password')">👁️</span>
+            </div>
+            
+            <p id="password-strength"></p> <!-- Password strength message -->
+            
+            <button type="submit" id="login-btn" disabled>Login</button>
+        </form>
+        <p>Don't have an account? <a href="register.php">Create Account</a></p>
+    </div>
+
+    <script>
+        function togglePassword(fieldId) {
+            const passwordField = document.getElementById(fieldId);
+            const toggleIcon = passwordField.nextElementSibling;
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                toggleIcon.textContent = "👁️‍🗨️";
+            } else {
+                passwordField.type = "password";
+                toggleIcon.textContent = "👁️";
+            }
+        }
+
+        function checkPasswordStrength() {
+            const password = document.getElementById("password").value;
+            const strengthText = document.getElementById("password-strength");
+            const loginButton = document.getElementById("login-btn");
+
+            const strongRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            const mediumRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*?&]{6,}$/;
+
+            if (password.length < 8) {
+                strengthText.innerHTML = "❌ Too short (Min: 8 chars)";
+                strengthText.style.color = "red";
+                loginButton.disabled = true;
+            } else if (strongRegex.test(password)) {
+                strengthText.innerHTML = "✅ Strong Password";
+                strengthText.style.color = "green";
+                loginButton.disabled = false;
+            } else if (mediumRegex.test(password)) {
+                strengthText.innerHTML = "⚠️ Medium Password (Add special character)";
+                strengthText.style.color = "orange";
+                loginButton.disabled = true;
+            } else {
+                strengthText.innerHTML = "❌ Weak Password (Use uppercase, number & special char)";
+                strengthText.style.color = "red";
+                loginButton.disabled = true;
+            }
+        }
+    </script>
+</body>
+</html>

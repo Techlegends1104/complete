@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+    <script src="js/T.JS"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        html,
+        body {
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="detail">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12" style="text-align: center;">
+                        <img src="images/left-arrow.png">
+                        <h2>Library Management <br>System</h2>
+                        <p style="text-align: justify;margin: 15px 0;">A Library Management System that efficiently
+                            manages,
+                            tracks, and automates daily operations. With end-to-end automation, it simplifies book
+                            issuance,
+                            returns, and inventory management. Secure authentication and personalized dashboards enhance
+                            user experience. Enjoy seamless access, organized records, and a smarter library system.</p>
+                    </div>
+                    <!-- <div class="col-md-5 col-12"> -->
+                    <!-- <img src="images/library.jpg" alt="" width="100%" style="margin: 70px 5px;"> -->
+                    <!-- </div> -->
+                </div>
+            </div>
+        </section>
+        <section class="search-section" id="top">
+            <div class="row">
+                <div class="col">
+                    <h2>Search for a Book</h2>
+                    <input type="text" id="searchBox" placeholder="Enter book name or code...">
+                    <button onclick="searchBook()">Search</button>
+                    <div id="searchResults"></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-container">
+            <div class="section-item">
+                <img src="images/book.webp"
+                    alt="Books">
+                <p>90,750+ Books</p>
+            </div>
+            <div class="section-item">
+                <img src="images/ebook.jpg"
+                    alt="eBooks">
+                <p>13,400+ eBooks</p>
+            </div>
+            <div class="section-item">
+                <img src="images/ejournals.png" alt="eJournals">
+                <p>8,000+ eJournals</p>
+            </div>
+            <div class="section-item">
+                <img src="images/databse.png"
+                    alt="eDatabases">
+                <p>40+ eDatabases</p>
+            </div>
+        </div>
+
+        <section class="library-rules">
+            <h2>Library Rules</h2>
+            <ul>
+                <li>
+                    <a href="#/" onclick="hideShow(0)">Late submission of books will result in a fine of ₹50 per day.
+                        <span><i class="fa fa-caret-down" id="fa-caret-down"></i></span>
+                    </a>
+                    <p class="hide" id="hid">Late submission of library books will attract a fine of ₹50 per day,
+                        calculated from the due date until the book is returned. To maintain fairness and availability
+                        of resources for all users, we kindly request that books be returned on or before the due date.
+                        Repeated delays may lead to additional disciplinary actions.</p>
+                </li>
+                <li>
+                    <a href="#/" onclick="hideShow(1)">If a book is damaged, you must pay the full cost.
+                        <span><i class="fa fa-caret-down" id="fa-caret-down"></i></span>
+                    </a>
+                    <p class="hide">If a book is returned in a damaged condition, the borrower will be held responsible for the damage and must pay the full replacement cost of the book. This policy ensures that library materials remain in good condition for all users and helps maintain the overall quality of the library’s collection.</p>
+                </li>
+                <li>
+                    <a href="#/" onclick="hideShow(2)">Books can be issued for up to 14 days, with one renewal allowed.
+                        <span><i class="fa fa-caret-down" id="fa-caret-down"></i></span>
+                    </a>
+                    <p class="hide">Books can be issued to users for a maximum period of 14 days. If needed, a one-time renewal is permitted, allowing the user to extend the borrowing period. However, this renewal is subject to the book not being reserved by another user. Timely return after renewal is also strictly expected.</p>
+                </li>
+                <li>
+                    <a href="#/" onclick="hideShow(3)">Library cards are non-transferable.
+                        <span><i class="fa fa-caret-down" id="fa-caret-down"></i></span>
+                    </a>
+                    <p class="hide">Library cards are issued to individual users and are strictly non-transferable. Each card is intended for personal use only and must not be shared, lent, or used by others. Misuse of a library card, including allowing someone else to use it, may result in suspension of library privileges or other penalties.</p>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <script>
+        function hideShow(n) {
+            if (document.getElementsByClassName("hide")[n].style.display == "block") {
+                document.getElementsByClassName("hide")[n].style.display = "none";
+            } else {
+                document.getElementsByClassName("hide")[n].style.display = "block";
+            }
+            if (document.getElementsByClassName("hide")[n].style.display == "block") {
+                document.querySelectorAll(".fa-caret-down")[n].style.rotate = "180deg";
+            } else {
+                document.querySelectorAll(".fa-caret-down")[n].style.rotate = "0deg";
+            }
+        }
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

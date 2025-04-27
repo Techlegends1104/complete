@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View All Books</title>
+    <link rel="stylesheet" href="css/books.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+
+    <header>
+        <h1 class="main-heading">View All Books</h1>
+    </header>
+
+    <!-- Branch Section -->
+    <div class="branch-container">
+        <button id="backButton" class="back-button" onclick="goBack()">Back</button>
+        
+        <div class="branch-card CSE" onclick="showBooks('CSE')">
+            <h2>Computer Science Engineering</h2>
+            <p>Click to View Books</p>
+        </div>
+        <div class="branch-card Electrical" onclick="showBooks('Electrical')">
+            <h2>Electrical Engineering</h2>
+            <p>Click to View Books</p>
+        </div>
+        <div class="branch-card Mechanical" onclick="showBooks('Mechanical')">
+            <h2>Mechanical Engineering</h2>
+            <p>Click to View Books</p>
+        </div>
+        <div class="branch-card Metallurgy" onclick="showBooks('Metallurgy')">
+            <h2>Metallurgy Engineering</h2>
+            <p>Click to View Books</p>
+        </div>
+    </div>
+
+    <!-- Book Section -->
+    <section id="bookSection" class="book-section">
+        <!-- <input type="text" id="searchInput" onkeyup="searchBooks()" placeholder="Search by Book Code, Name, or Author" class="search-box" /> -->
+        <!-- Search Section -->
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search by Book Code, Name, or Author" />
+    <button id="searchButton" class="search-button">Search</button>
+</div>
+
+        <table id="bookTable">
+            <thead>
+                <tr>
+                    <th>Book Code</th>
+                    <th>Book Name</th>
+                    <th>Author</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="bookTableBody">
+                <!-- Dynamic content will be added here -->
+            </tbody>
+        </table>
+    </section>
+    
+    
+    <script src="js/books.js"></script>
+</body>
+
+</html>
