@@ -11,57 +11,49 @@
 
 <body>
 
+    <!-- Header -->
     <header>
         <h1 class="main-heading">View All Books</h1>
     </header>
 
-    <!-- Branch Section -->
+    <!-- Branch Container -->
     <div class="branch-container">
-        <button id="backButton" class="back-button" onclick="goBack()">Back</button>
-        
-        <div class="branch-card CSE" onclick="showBooks('CSE')">
-            <h2>Computer Science Engineering</h2>
-            <p>Click to View Books</p>
-        </div>
-        <div class="branch-card Electrical" onclick="showBooks('Electrical')">
-            <h2>Electrical Engineering</h2>
-            <p>Click to View Books</p>
-        </div>
-        <div class="branch-card Mechanical" onclick="showBooks('Mechanical')">
-            <h2>Mechanical Engineering</h2>
-            <p>Click to View Books</p>
-        </div>
-        <div class="branch-card Metallurgy" onclick="showBooks('Metallurgy')">
-            <h2>Metallurgy Engineering</h2>
-            <p>Click to View Books</p>
-        </div>
+
+        <!-- Computer Science Engineering -->
+        <a href="cse.html" class="branch-link">
+            <div class="branch-card CSE">
+                <h2>Computer Science Engineering</h2>
+                <p>Click to View Books</p>
+            </div>
+        </a>
+
+        <!-- Mechanical Engineering -->
+        <a href="mech.html" class="branch-link">
+            <div class="branch-card Mechanical">
+                <h2>Mechanical Engineering</h2>
+                <p>Click to View Books</p>
+            </div>
+        </a>
+
+        <!-- Electrical Engineering -->
+        <a href="ele.html" class="branch-link">
+            <div class="branch-card Electrical">
+                <h2>Electrical Engineering</h2>
+                <p>Click to View Books</p>
+            </div>
+        </a>
+
+        <!-- Metallurgy Engineering -->
+        <a href="meta.html" class="branch-link">
+            <div class="branch-card Metallurgy">
+                <h2>Metallurgy Engineering</h2>
+                <p>Click to View Books</p>
+            </div>
+        </a>
+
     </div>
 
-    <!-- Book Section -->
-    <section id="bookSection" class="book-section">
-        <!-- <input type="text" id="searchInput" onkeyup="searchBooks()" placeholder="Search by Book Code, Name, or Author" class="search-box" /> -->
-        <!-- Search Section -->
-<div class="search-container">
-    <input type="text" id="searchInput" placeholder="Search by Book Code, Name, or Author" />
-    <button id="searchButton" class="search-button">Search</button>
-</div>
-
-        <table id="bookTable">
-            <thead>
-                <tr>
-                    <th>Book Code</th>
-                    <th>Book Name</th>
-                    <th>Author</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="bookTableBody">
-                <!-- Dynamic content will be added here -->
-            </tbody>
-        </table>
-    </section>
-    
-    
+    <!-- JavaScript File -->
     <script src="js/books.js"></script>
 </body>
 

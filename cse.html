@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>View All Books - CSE</title>
+<link rel="stylesheet" href="css/books.css">
+</head>
+<body>
+
+<h1 class="main-heading">View All Books</h1>
+
+<!-- BACK BUTTON TO MAIN.HTML -->
+
+  
+<div class="back-button-container">
+    <button onclick="window.location.href='books.html'" class="back-button"> Back</button>
+</div>
+<div class="branch-container">
+    <a href="cse.html">
+        <div class="branch-card CSE">
+            <h2>Computer Science Engineering</h2>
+            <p>Click to View Books</p>
+        </div>
+    </a>
+</div>    
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="Search by Book Code, Name, or Author" />
+    <button id="searchBtn" class="search-button">Search</button>
+</div>
+
+<div class="table-container">
+    <table id="bookTable">
+    <thead>
+        <tr>
+        <th>Book Code</th>
+        <th>Book Name</th>
+        <th>Author</th>
+        <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="bookTableBody">
+        <!-- Dynamic content will be added by JS -->
+    </tbody>
+    </table>
+</div>
+
+<script src="js/books.js"></script>
+</body>
+</html>

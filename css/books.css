@@ -1,14 +1,14 @@
-/* Body styling */
+/* Body Styling */
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(to right, #3A89C9, #002B5B);
-    min-height: 100vh;
+    min-height: 100%;
     padding: 20px;
     color: white;
 }
 
-/* Main heading styling */
+/* Main Heading */
 .main-heading {
     text-align: center;
     font-size: 36px;
@@ -16,7 +16,7 @@ body {
     color: #FFD700;
 }
 
-/* Branch container styling */
+/* Branch Container */
 .branch-container {
     display: flex;
     flex-wrap: wrap;
@@ -25,12 +25,19 @@ body {
     margin-top: 20px;
 }
 
-/* Individual branch card styling */
+/* Link inside Branch Container */
+.branch-container a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Branch Card */
 .branch-card {
     position: relative;
     background: #001F3F;
     padding: 30px;
     width: 280px;
+    height: 140px;
     text-align: center;
     border-radius: 10px;
     overflow: hidden;
@@ -42,13 +49,13 @@ body {
     z-index: 1;
 }
 
-/* Animation delay for each card */
+/* Animation Delay for Cards */
 .branch-card:nth-child(1) { animation-delay: 0s; }
 .branch-card:nth-child(2) { animation-delay: 0.2s; }
 .branch-card:nth-child(3) { animation-delay: 0.4s; }
 .branch-card:nth-child(4) { animation-delay: 0.6s; }
 
-/* Border effect animation for branch cards */
+/* Border Effect Animation */
 .branch-card::before {
     content: '';
     position: absolute;
@@ -63,7 +70,7 @@ body {
     border-radius: 12px;
 }
 
-/* Inner border styling for branch cards */
+/* Inner Border */
 .branch-card::after {
     content: '';
     position: absolute;
@@ -76,13 +83,13 @@ body {
     z-index: -1;
 }
 
-/* Hover effect for branch card */
+/* Hover Effect */
 .branch-card:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
 }
 
-/* Fade-in animation for branch cards */
+/* Animations */
 @keyframes fadeInUp {
     to {
         opacity: 1;
@@ -90,14 +97,13 @@ body {
     }
 }
 
-/* Blue border animation */
 @keyframes borderAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* Book Section Styling */
+/* Book Section */
 .book-section {
     margin-top: 50px;
     opacity: 0;
@@ -106,54 +112,52 @@ body {
     text-align: center;
 }
 
-/* Book Section active class */
 .book-section.active {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Search container styling */
+/* Search Section */
 .search-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin: 30px 0 20px;
+    flex-wrap: wrap;
 }
 
-/* Search input styling */
+/* Search Input */
 #searchInput {
     width: 50%;
     padding: 12px;
-    margin-bottom: 2px;
-    margin-right: 10px; /* Space between input and button */
     border: none;
     border-radius: 8px;
     font-size: 16px;
     outline: none;
     background-color: #f0f0f0;
+    margin-bottom: 10px;
 }
 
-/* Search button styling */
+/* Search Button */
 .search-button {
     background-color: #3A89C9;
     color: white;
-    padding: 12px 16px;
+    padding: 12px 20px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s;
+    margin-left: 10px;
 }
 
-/* Hover effect for search button */
 .search-button:hover {
     background-color: #005f99;
 }
 
-/* Book table styling */
+/* Book Table */
 #bookTable {
     width: 90%;
-    margin: 0 auto;
+    margin: 20px auto;
     border-collapse: collapse;
     background: white;
     color: black;
@@ -162,18 +166,19 @@ body {
     table-layout: fixed;
 }
 
-/* Table header and cell styling */
-#bookTable th, #bookTable td {
+/* Table Header and Cell */
+#bookTable th,
+#bookTable td {
     padding: 15px;
     text-align: center;
     border-bottom: 1px solid #ccc;
     word-wrap: break-word;
 }
 
-/* Borrow button styling */
+/* Borrow Button */
 .borrow-button {
     background-color: #3A89C9;
-    color: #000;
+    color: black;
     padding: 8px 16px;
     border: none;
     border-radius: 5px;
@@ -181,117 +186,113 @@ body {
     transition: background 0.3s;
 }
 
-/* Hover effect for borrow button */
 .borrow-button:hover {
     background-color: #005f99;
 }
 
-/* Initially hide the back button */
-.back-button {
-    display: none;
-    background-color: #3A89C9;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-    position: fixed;
+/* Back Button Container */
+.back-button-container {
+    position: absolute;
     top: 100px;
     left: 20px;
-    z-index: 1000;
 }
 
-/* Show back button when active */
-.back-button.active {
-    display: block;
+/* Back Button */
+.back-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-/* Back button hover effect */
 .back-button:hover {
-    background-color: #005f99;
+    background-color: #0056b3;
 }
 
-/* Media Queries for responsive design */
-/* Media Queries for screens up to 768px (tablet and below) */
+/* Responsive Design */
+
+/* Tablet (≤768px) */
 @media (max-width: 768px) {
-    /* Ensure the table is scrollable horizontally on smaller screens */
+    /* Make table scrollable */
     #bookTable {
         width: 100%;
         overflow-x: auto;
         display: block;
         -webkit-overflow-scrolling: touch;
-        table-layout: auto; /* Auto adjust the table layout */
+        table-layout: auto;
     }
 
-    /* Make the table header sticky for easier scrolling */
     #bookTable th {
         position: sticky;
         top: 0;
         background-color: #b5d5ef;
-        color: #000;
+        color: black;
         z-index: 1;
     }
 
-    /* Adjust padding for table cells for mobile devices */
-    #bookTable th, #bookTable td {
+    #bookTable th,
+    #bookTable td {
         padding: 10px 8px;
-        word-wrap: break-word; /* Ensure long words break and wrap into the next line */
-        min-width: 100px; /* Set a minimum width for cells */
+        word-break: break-word;
+        min-width: 100px;
     }
-
-    /* Adjust branch card width for smaller screens */
+    .branch-container{
+        max-width: 350px;
+        justify-content: center;
+        display: flex;
+        word-break: break-word;
+    }
     .branch-card {
         width: 90%;
         padding: 20px;
+        margin: 10px auto;
     }
 
-    /* Adjust the back button's position on mobile */
-    .back-button {
-        top: 10px;
-        left: 10px;
-    }
-
-    /* Adjust search input width for better mobile display */
     #searchInput {
         width: 80%;
     }
 
-    /* Place search button below the input on mobile */
-    .search-container {
-        flex-direction: column;
+    .search-button {
+        width: 60%;
+        margin-top: 10px;
     }
 }
 
-/* Media Queries for very small screens (mobile phones below 480px) */
+/* Mobile (≤480px) */
 @media (max-width: 480px) {
-    /* Reduce font size for main heading */
     .main-heading {
-        font-size: 28px;
+        font-size: 26px;
+        text-align: center;
     }
 
-    /* Adjust search input width for smaller devices */
-    #searchInput {
-        width: 80%;
-    }
-
-    /* Make the table fully responsive */
     #bookTable {
-        width: 100%;
+        width: 90%;
         overflow-x: auto;
         display: block;
-        table-layout: auto; /* Allow table layout adjustment */
     }
 
-    /* Adjust padding for table cells on very small screens */
-    #bookTable th, #bookTable td {
+    #bookTable th,
+    #bookTable td {
         padding: 8px 5px;
-        min-width: 80px; /* Ensure cells don’t shrink too much */
+        min-width: 80px;
     }
 
-    /* Adjust search button width on mobile */
+    .branch-card {
+        width: 95%;
+        padding: 15px;
+        margin: 8px auto;
+    }
+
+    #searchInput {
+        width: 90%;
+    }
+
     .search-button {
-        width: 50%;
-        margin-top: 10px;
+        width: 70%;
+        margin-top: 8px;
     }
 }

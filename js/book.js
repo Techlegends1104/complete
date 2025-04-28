@@ -1,5 +1,3 @@
-// script.js
-
 const books = {
     CSE: [
         { code: "CSE101", name: "Introduction to Algorithms", author: "Thomas H. Cormen" },
@@ -193,10 +191,24 @@ const books = {
         { code: "MT131", name: "Metallurgical Thermodynamics and Kinetics", author: "David G. Ricker" },
         { code: "MT132", name: "Materials Science: An Introduction", author: "James F. Shackelford" },
         { code: "MT133", name: "Non-Ferrous Metals", author: "J.C. Jindal" }
-    ]
+    ]    
 };
 
+// Function to display books of the selected branch and hide other branches
 function showBooks(branch) {
+    // Hide all branch cards except the selected one
+    const branchCards = document.querySelectorAll('.branch-card');
+    branchCards.forEach(card => {
+        if (!card.classList.contains(branch)) {
+            card.style.display = 'none';
+        }
+    });
+
+    // Display the book section
+    const bookSection = document.getElementById('bookSection');
+    bookSection.classList.add('active');
+
+    // Fill the table with books from the selected branch
     const tbody = document.getElementById('bookTableBody');
     tbody.innerHTML = '';
 
@@ -206,12 +218,16 @@ function showBooks(branch) {
             <td>${book.name}</td>
             <td>${book.author}</td>
             <td><button class="borrow-button" onclick="borrowBook()">Borrow</button></td>
-
         </tr>`;
         tbody.innerHTML += row;
     });
-}
 
+    // Show the back button
+    const backButton = document.getElementById('backButton');
+    backButton.style.display = 'inline-block';
+}
+// Function to show a pop-up message when the Borrow button is clicked
+// Function to show a pop-up message when the Borrow button is clicked
 function borrowBook() {
     Swal.fire({
         title: "Request Sent!",
@@ -221,6 +237,8 @@ function borrowBook() {
     });
 }
 
+
+// Function to filter books based on search input
 function searchBooks() {
     const input = document.getElementById('searchInput');
     const filter = input.value.toUpperCase();
@@ -228,7 +246,7 @@ function searchBooks() {
     const tr = table.getElementsByTagName('tr');
     let found = false;
 
-    for (let i = 1; i < tr.length; i++) { // skip header
+    for (let i = 1; i < tr.length; i++) { // Start from 1 to skip header row
         let tdCode = tr[i].getElementsByTagName('td')[0];
         let tdName = tr[i].getElementsByTagName('td')[1];
         let tdAuthor = tr[i].getElementsByTagName('td')[2];
@@ -251,6 +269,7 @@ function searchBooks() {
         }
     }
 
+    // Handle no result message
     const noResultRow = document.getElementById('noResultRow');
     if (!found) {
         if (!noResultRow) {
@@ -269,9 +288,29 @@ function searchBooks() {
     }
 }
 
-// Event listeners
-document.getElementById('searchBtn').addEventListener('click', searchBooks);
+// Function to go back to the branch selection
+function goBack() {
+    // Show all branch cards again
+    const branchCards = document.querySelectorAll('.branch-card');
+    branchCards.forEach(card => {
+        card.style.display = 'block';
+    });
 
+    // Hide the book section
+    const bookSection = document.getElementById('bookSection');
+    bookSection.classList.remove('active');
+
+    // Hide the back button
+    const backButton = document.getElementById('backButton');
+    backButton.style.display = 'none';
+
+    // Clear search input and reset table
+    document.getElementById('searchInput').value = '';
+    searchBooks();
+}
+
+
+// Event listener for Enter key press inside search input
 document.getElementById('searchInput').addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         event.preventDefault();
@@ -279,7 +318,23 @@ document.getElementById('searchInput').addEventListener('keypress', function (ev
     }
 });
 
-// Load books when page loads
-showBooks('CSE');
+// Event listener for clicking search button
+document.getElementById('searchButton').addEventListener('click', function () {
+    searchBooks();
+});
+function adjustPlaceholder() {
+    const input = document.getElementById('searchInput');
+    if (window.innerWidth <= 600) {
+        input.placeholder = "Search books...";
+    } else {
+        input.placeholder = "Search by Book Code, Name, or Author";
+    }
+}
+
+// Adjust placeholder when the page loads
+window.addEventListener('load', adjustPlaceholder);
+
+// Adjust placeholder when the user resizes the window
+window.addEventListener('resize', adjustPlaceholder);
 
 
