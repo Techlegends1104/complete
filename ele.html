@@ -1,23 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>View All Books - Electrical</title>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<link rel="stylesheet" href="css/books.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>View All Books - Electrical</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/books.css">
 </head>
 <body>
 
-
 <h1 class="main-heading">View All Books</h1>
 <div class="back-button-container">
-            <button onclick="window.location.href='books.html'" class="back-button">Back</button>
-        </div>   
+    <button onclick="window.location.href='books.html'" class="back-button">Back</button>
+</div>   
 <div class="branch-container">
-
     <a href="electrical.html">
-             
         <div class="branch-card Electrical">
             <h2>Electrical Engineering</h2>
             <p>Click to View Books</p>
@@ -32,20 +29,187 @@
 
 <div class="table-container">
     <table id="bookTable">
-    <thead>
-        <tr>
-        <th>Book Code</th>
-        <th>Book Name</th>
-        <th>Author</th>
-        <th>Action</th>
-        </tr>
-    </thead>
-    <tbody id="bookTableBody">
-        <!-- Dynamic content will be added by JS -->
-    </tbody>
+        <thead>
+            <tr>
+                <th>Book Code</th>
+                <th>Book Name</th>
+                <th>Author</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="bookTableBody">
+            <!-- Dynamic content will be added by JS -->
+        </tbody>
     </table>
 </div>
 
 <script src="js/books.js"></script>
+<script>
+    const books = {
+        Electrical: [
+            { code: "EE101", name: "Circuit Theory", author: "Hayt" },
+            { code: "EE102", name: "Control Systems", author: "Nagrath" },
+            { code: "EE103", name: "Electrical Machines", author: "I.J. Nagrath" },
+            { code: "EE104", name: "Power System Engineering", author: "C.L. Wadhwa" },
+            { code: "EE105", name: "Power Electronics", author: "M.H. Rashid" },
+            { code: "EE106", name: "Electrical Power Generation", author: "S. N. Singh" },
+            { code: "EE107", name: "Analog Electronics", author: "J. Millman" },
+            { code: "EE108", name: "Digital Electronics", author: "M. Morris Mano" },
+            { code: "EE109", name: "Electrical Measurements & Instrumentation", author: "A.K. Sawhney" },
+            { code: "EE110", name: "Electromagnetic Fields", author: "Sadiku" },
+            { code: "EE111", name: "Electrical Machines II", author: "B.L. Theraja" },
+            { code: "EE112", name: "Linear Control Systems", author: "Ogata" },
+            { code: "EE113", name: "Signals and Systems", author: "A.V. Oppenheim" },
+            { code: "EE114", name: "Power System Analysis", author: "J. Duncan Glover" },
+            { code: "EE115", name: "Switchgear and Protection", author: "S.K. Sahdev" },
+            { code: "EE116", name: "Microprocessors & Microcontrollers", author: "Ramesh S. Gaonkar" },
+            { code: "EE117", name: "Electrical Machines I", author: "P.S. Bimbhra" },
+            { code: "EE118", name: "Transmission and Distribution", author: "S. L. Uppal" },
+            { code: "EE119", name: "Electrical Engineering Materials", author: "S. K. Bhattacharya" },
+            { code: "EE120", name: "Electrical Drives and Control", author: "G.K. Dubey" },
+            { code: "EE121", name: "High Voltage Engineering", author: "M.S. Naidu" },
+            { code: "EE122", name: "Renewable Energy", author: "G.D. Rai" },
+            { code: "EE123", name: "Solid State Devices", author: "Ben G. Streetman" },
+            { code: "EE124", name: "Advanced Power Electronics", author: "B. K. Bose" },
+            { code: "EE125", name: "Electric Machines: Steady-State Theory", author: "William H. Hayt" },
+            { code: "EE126", name: "Industrial Automation", author: "T. J. A. Meijer" },
+            { code: "EE127", name: "Advanced Control Systems", author: "B.C. Kuo" },
+            { code: "EE128", name: "Electrical Estimating and Costing", author: "S.L. Uppal" },
+            { code: "EE129", name: "Power Electronics and Drives", author: "S. B. Soman" },
+            { code: "EE130", name: "Digital Signal Processing", author: "John G. Proakis" },
+            { code: "EE131", name: "Communication Systems", author: "H.Taub & D.L. Schilling" },
+            { code: "EE132", name: "Advanced Digital Communication", author: "Leon W. Couch" },
+            { code: "EE133", name: "Microelectronic Circuits", author: "Sedra & Smith" },
+            { code: "EE134", name: "Electronics Devices and Circuits", author: "R. L. Boylestad" },
+            { code: "EE135", name: "Electromagnetic Field Theory", author: "M. N. O. Sadiku" },
+            { code: "EE136", name: "Electrical Power Quality", author: "M.H. Bollen" },
+            { code: "EE137", name: "Electrical Transmission Lines", author: "John D. Ryder" },
+            { code: "EE138", name: "Switching Theory and Logic Design", author: "M. Morris Mano" },
+            { code: "EE139", name: "Electrical Circuit Analysis", author: "W.H. Hayt" },
+            { code: "EE140", name: "Electrical System Design", author: "Ned Mohan" },
+            { code: "EE141", name: "Electric Vehicles", author: "James Larminie" },
+            { code: "EE142", name: "Smart Grid Technology", author: "James Momoh" },
+            { code: "EE143", name: "Electrical Transients in Power Systems", author: "M. S. Sarma" },
+            { code: "EE144", name: "Instrumentation & Control Systems", author: "A.K. Sawhney" },
+            { code: "EE145", name: "Electrical Engineering Fundamentals", author: "Vincent Del Toro" },
+            { code: "EE146", name: "Circuit Analysis", author: "J. David Irwin" },
+            { code: "EE147", name: "Introduction to Power Systems", author: "A. S. Pabla" },
+            { code: "EE148", name: "Power Electronics for Renewable Energy", author: "J. P. Choi" },
+            { code: "EE149", name: "Electrical Engineering in Energy Systems", author: "D. R. McDonald" },
+            { code: "EE150", name: "Automation and Control Systems", author: "Frank D. Petruzella" }
+        ],
+    };
+
+    function borrowBook(bookName) {
+        Swal.fire({
+            title: "Request Sent!",
+            text: `Your request to borrow the book "${bookName}" has been sent to the admin. Thank you!`,
+            icon: "success",
+            confirmButtonText: "OK"
+        });
+    }
+
+    function renderBooks() {
+        const tableBody = document.getElementById("bookTableBody");
+
+        // Clear existing content in the table
+        tableBody.innerHTML = "";
+
+        // Loop through books and create table rows
+        books.Electrical.forEach(book => {
+            const row = document.createElement("tr");
+
+            const codeCell = document.createElement("td");
+            codeCell.textContent = book.code;
+
+            const nameCell = document.createElement("td");
+            nameCell.textContent = book.name;
+
+            const authorCell = document.createElement("td");
+            authorCell.textContent = book.author;
+
+            const actionCell = document.createElement("td");
+            const borrowButton = document.createElement("button");
+            borrowButton.textContent = "Borrow";
+            borrowButton.classList.add("borrow-button");
+            borrowButton.onclick = function() {
+                borrowBook(book.name);
+            };
+            actionCell.appendChild(borrowButton);
+
+            row.appendChild(codeCell);
+            row.appendChild(nameCell);
+            row.appendChild(authorCell);
+            row.appendChild(actionCell);
+
+            tableBody.appendChild(row);
+        });
+    }
+
+    // Call renderBooks function when the page loads
+    document.addEventListener("DOMContentLoaded", renderBooks);
+
+    // Search functionality
+    const searchButton = document.getElementById("searchBtn");
+    const searchInput = document.getElementById("searchInput");
+
+    searchButton.addEventListener("click", function() {
+        const searchQuery = searchInput.value.toLowerCase();
+
+        // Filter books based on the search query
+        const filteredBooks = books.Electrical.filter(book => {
+            return (
+                book.code.toLowerCase().includes(searchQuery) ||
+                book.name.toLowerCase().includes(searchQuery) ||
+                book.author.toLowerCase().includes(searchQuery)
+            );
+        });
+
+        // Update the table with filtered books
+        const tableBody = document.getElementById("bookTableBody");
+        tableBody.innerHTML = "";
+
+        filteredBooks.forEach(book => {
+            const row = document.createElement("tr");
+
+            const codeCell = document.createElement("td");
+            codeCell.textContent = book.code;
+
+            const nameCell = document.createElement("td");
+            nameCell.textContent = book.name;
+
+            const authorCell = document.createElement("td");
+            authorCell.textContent = book.author;
+
+            const actionCell = document.createElement("td");
+            const borrowButton = document.createElement("button");
+            borrowButton.textContent = "Borrow";
+            borrowButton.classList.add("borrow-button");
+            borrowButton.onclick = function() {
+                borrowBook(book.name);
+            };
+            actionCell.appendChild(borrowButton);
+
+            row.appendChild(codeCell);
+            row.appendChild(nameCell);
+            row.appendChild(authorCell);
+            row.appendChild(actionCell);
+
+            tableBody.appendChild(row);
+        });
+
+        if (filteredBooks.length === 0) {
+            Swal.fire("No books found matching your search.");
+        }
+    });
+
+    // Allow search functionality on pressing Enter
+    searchInput.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            searchButton.click();
+        }
+    });
+</script>
+
 </body>
 </html>

@@ -9,22 +9,18 @@
 </head>
 <body>
 
-
 <h1 class="main-heading">View All Books</h1>
 <div class="back-button-container">
     <button onclick="window.location.href='books.html'" class="back-button">Back</button>
 </div>
 <div class="branch-container">
-
     <a href="meta.html">
         <div class="branch-card META">
-            
-              
             <h2>Meta Engineering</h2>
             <p>Click to View Books</p>
         </div>
     </a>
-</div>    
+</div>
 
 <div class="search-container">
     <input type="text" id="searchInput" placeholder="Search by Book Code, Name, or Author" />
@@ -48,5 +44,143 @@
 </div>
 
 <script src="js/books.js"></script>
+<script>
+    const books = {
+        Metallurgy: [
+            { code: "MT101", name: "Material Science", author: "Callister" },
+            { code: "MT102", name: "Physical Metallurgy", author: "Sidney Avner" },
+            { code: "MT103", name: "Mechanical Metallurgy", author: "George E. Dieter" },
+            { code: "MT104", name: "Introduction to Physical Metallurgy", author: "Baldev Raj" },
+            { code: "MT105", name: "Materials Science and Engineering", author: "William D. Callister" },
+            { code: "MT106", name: "Heat Treatment of Metals", author: "ASM Handbook" },
+            { code: "MT107", name: "Phase Diagrams of Binary Alloys", author: "Massimo L. Santoro" },
+            { code: "MT108", name: "Principles of Materials Science and Engineering", author: "William F. Smith" },
+            { code: "MT109", name: "Metallurgical Thermodynamics", author: "J.R. Sampath" },
+            { code: "MT110", name: "Welding Metallurgy", author: "Sindo Kou" },
+            { code: "MT111", name: "Corrosion Engineering", author: "Mars G. Fontana" },
+            { code: "MT112", name: "Engineering Alloys", author: "K.R. Pye" },
+            { code: "MT113", name: "Physical Metallurgy Principles", author: "R.W. Cahn" },
+            { code: "MT114", name: "Ferrous Metallurgy", author: "T. S. P. Murthy" },
+            { code: "MT115", name: "Metallurgy of Welding", author: "J. F. Lancaster" },
+            { code: "MT116", name: "Materials Selection in Mechanical Design", author: "Michael F. Ashby" },
+            { code: "MT117", name: "The Structure of Materials", author: "Vikram R. Varma" },
+            { code: "MT118", name: "Ceramics and Composites", author: "W.D. Kingery" },
+            { code: "MT119", name: "Physical Metallurgy of Steels", author: "George Krauss" },
+            { code: "MT120", name: "Fundamentals of Metallic Corrosion", author: "Philip A. Schweitzer" },
+            { code: "MT121", name: "Advanced Metallurgical Process", author: "D. S. K. Nair" },
+            { code: "MT122", name: "Foundry Technology", author: "P.L. Jain" },
+            { code: "MT123", name: "Materials Science and Engineering: An Introduction", author: "William D. Callister" },
+            { code: "MT124", name: "Materials Characterization Techniques", author: "S. Suresh" },
+            { code: "MT125", name: "Metal Forming: Mechanics and Metallurgy", author: "William F. Hosford" },
+            { code: "MT126", name: "Introduction to Metallurgy", author: "Harry R. Matl" },
+            { code: "MT127", name: "Composite Materials", author: "P.K. Mallick" },
+            { code: "MT128", name: "Extraction of Non-Ferrous Metals", author: "H.S. Ray" },
+            { code: "MT129", name: "Steel Metallurgy", author: "R. L. McMillan" },
+            { code: "MT130", name: "Refractories in Metallurgy", author: "K. T. Jacob" },
+            { code: "MT131", name: "Metallurgical Thermodynamics and Kinetics", author: "David G. Ricker" },
+            { code: "MT132", name: "Materials Science: An Introduction", author: "James F. Shackelford" },
+            { code: "MT133", name: "Non-Ferrous Metals", author: "J.C. Jindal" }
+        ]
+    };
+
+    function borrowBook(bookName) {
+        Swal.fire({
+            title: "Request Sent!",
+            text: `Your request to borrow the book "${bookName}" has been sent to the admin. Thank you!`,
+            icon: "success",
+            confirmButtonText: "OK"
+        });
+    }
+
+    function renderBooks() {
+        const tableBody = document.getElementById("bookTableBody");
+
+        // Clear existing content in the table
+        tableBody.innerHTML = "";
+
+        // Loop through books and create table rows
+        books.Metallurgy.forEach(book => {
+            const row = document.createElement("tr");
+
+            const codeCell = document.createElement("td");
+            codeCell.textContent = book.code;
+
+            const nameCell = document.createElement("td");
+            nameCell.textContent = book.name;
+
+            const authorCell = document.createElement("td");
+            authorCell.textContent = book.author;
+
+            const actionCell = document.createElement("td");
+            const borrowButton = document.createElement("button");
+            borrowButton.textContent = "Borrow";
+            borrowButton.classList.add("borrow-button");
+            borrowButton.onclick = function() {
+                borrowBook(book.name);
+            };
+            actionCell.appendChild(borrowButton);
+
+            row.appendChild(codeCell);
+            row.appendChild(nameCell);
+            row.appendChild(authorCell);
+            row.appendChild(actionCell);
+
+            tableBody.appendChild(row);
+        });
+    }
+
+    // Call renderBooks function when the page loads
+    document.addEventListener("DOMContentLoaded", renderBooks);
+
+    // Search functionality
+    const searchButton = document.getElementById("searchBtn");
+    const searchInput = document.getElementById("searchInput");
+
+    searchButton.addEventListener("click", function() {
+        const searchQuery = searchInput.value.toLowerCase();
+
+        // Filter books based on the search query
+        const filteredBooks = books.Metallurgy.filter(book => {
+            return (
+                book.code.toLowerCase().includes(searchQuery) ||
+                book.name.toLowerCase().includes(searchQuery) ||
+                book.author.toLowerCase().includes(searchQuery)
+            );
+        });
+
+        // Update the table with filtered books
+        const tableBody = document.getElementById("bookTableBody");
+        tableBody.innerHTML = "";
+
+        filteredBooks.forEach(book => {
+            const row = document.createElement("tr");
+
+            const codeCell = document.createElement("td");
+            codeCell.textContent = book.code;
+
+            const nameCell = document.createElement("td");
+            nameCell.textContent = book.name;
+
+            const authorCell = document.createElement("td");
+            authorCell.textContent = book.author;
+
+            const actionCell = document.createElement("td");
+            const borrowButton = document.createElement("button");
+            borrowButton.textContent = "Borrow";
+            borrowButton.classList.add("borrow-button");
+            borrowButton.onclick = function() {
+                borrowBook(book.name);
+            };
+            actionCell.appendChild(borrowButton);
+
+            row.appendChild(codeCell);
+            row.appendChild(nameCell);
+            row.appendChild(authorCell);
+            row.appendChild(actionCell);
+
+            tableBody.appendChild(row);
+        });
+    });
+</script>
 </body>
 </html>

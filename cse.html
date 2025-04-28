@@ -48,6 +48,159 @@
 </div>
 
 <script src="js/books.js"></script>
+<script>
+    const books = {
+    CSE: [
+        { code: "CSE101", name: "Introduction to Algorithms", author: "Thomas H. Cormen" },
+        { code: "CSE102", name: "Operating System Concepts", author: "Abraham Silberschatz" },
+        { code: "CSE103", name: "Database System Concepts", author: "Henry F. Korth" },
+        { code: "CSE104", name: "Computer Networking: Principles", author: "Andrew S. Tanenbaum" },
+        { code: "CSE105", name: "Artificial Intelligence: A Modern Approach", author: "Stuart Russell" },
+        { code: "CSE106", name: "Java Programming", author: "Herbert Schildt" },
+        { code: "CSE107", name: "Python Crash Course", author: "Eric Matthes" },
+        { code: "CSE108", name: "Head First Java", author: "Kathy Sierra" },
+        { code: "CSE109", name: "Data Structures and Algorithms in Java", author: "Robert Lafore" },
+        { code: "CSE110", name: "Clean Code", author: "Robert C. Martin" },
+        { code: "CSE111", name: "Design Patterns", author: "Erich Gamma" },
+        { code: "CSE112", name: "Effective Java", author: "Joshua Bloch" },
+        { code: "CSE113", name: "HTML and CSS: Design and Build Websites", author: "Jon Duckett" },
+        { code: "CSE114", name: "JavaScript: The Good Parts", author: "Douglas Crockford" },
+        { code: "CSE115", name: "React Up & Running", author: "Stoyan Stefanov" },
+        { code: "CSE116", name: "Node.js Design Patterns", author: "Mario Casciaro" },
+        { code: "CSE117", name: "Linux Administration Handbook", author: "Evi Nemeth" },
+        { code: "CSE118", name: "The Pragmatic Programmer", author: "Andrew Hunt" },
+        { code: "CSE119", name: "Cybersecurity Essentials", author: "Charles J. Brooks" },
+        { code: "CSE120", name: "Blockchain Basics", author: "Daniel Drescher" },
+        { code: "CSE121", name: "Computer Graphics with OpenGL", author: "Donald Hearn" },
+        { code: "CSE122", name: "Deep Learning with Python", author: "François Chollet" },
+        { code: "CSE123", name: "Introduction to Machine Learning", author: "Alpaydin" },
+        { code: "CSE124", name: "Cryptography and Network Security", author: "William Stallings" },
+        { code: "CSE125", name: "Software Engineering", author: "Ian Sommerville" },
+        { code: "CSE126", name: "PHP & MySQL Web Development", author: "Luke Welling" },
+        { code: "CSE127", name: "Programming Rust", author: "Jim Blandy" },
+        { code: "CSE128", name: "Swift Programming: The Big Nerd Ranch Guide", author: "Matthew Mathias" },
+        { code: "CSE129", name: "React Native in Action", author: "Nader Dabit" },
+        { code: "CSE130", name: "Flutter for Beginners", author: "Marco L. Napoli" },
+        { code: "CSE131", name: "Android Programming", author: "Bill Phillips" },
+        { code: "CSE132", name: "Full Stack JavaScript Development", author: "Eric Elliott" },
+        { code: "CSE133", name: "Introduction to Cloud Computing", author: "Rajkumar Buyya" },
+        { code: "CSE134", name: "Docker in Action", author: "Jeff Nickoloff" },
+        { code: "CSE135", name: "Kubernetes Up & Running", author: "Kelsey Hightower" },
+        { code: "CSE136", name: "Hands-on AWS", author: "Frank Kane" },
+        { code: "CSE137", name: "Python Machine Learning", author: "Sebastian Raschka" },
+        { code: "CSE138", name: "TensorFlow for Deep Learning", author: "Tom Hope" },
+        { code: "CSE139", name: "Hadoop: The Definitive Guide", author: "Tom White" },
+        { code: "CSE140", name: "Big Data Fundamentals", author: "Thomas Erl" },
+        { code: "CSE141", name: "Agile Software Development", author: "Robert C. Martin" },
+        { code: "CSE142", name: "Penetration Testing", author: "Georgia Weidman" },
+        { code: "CSE143", name: "Network Security Essentials", author: "William Stallings" },
+        { code: "CSE144", name: "CompTIA Security+", author: "Mike Meyers" },
+        { code: "CSE145", name: "CCNA Guide to Networking", author: "Richard Deal" },
+        { code: "CSE146", name: "Wireless Communications", author: "Theodore S. Rappaport" },
+        { code: "CSE147", name: "Computer Organization", author: "William Stalling" },
+        { code: "CSE148", name: "Assembly Language Step-By-Step", author: "Jeff Duntemann" },
+        { code: "CSE149", name: "Quantum Computing for Everyone", author: "Chris Bernhardt" },
+        { code: "CSE150", name: "The Art of Computer Programming", author: "Donald Knuth" }
+      ]
+    };
+    function borrowBook(bookName) {
+        Swal.fire({
+            title: "Request Sent!",
+            text: `Your request to borrow the book "${bookName}" has been sent to the admin. Thank you!`,
+            icon: "success",
+            confirmButtonText: "OK"
+        });
+    }
 
+    function renderBooks() {
+        const tableBody = document.getElementById("bookTableBody");
+
+        // Clear existing content in the table
+        tableBody.innerHTML = "";
+
+        // Loop through books and create table rows
+        books.CSE.forEach(book => {
+            const row = document.createElement("tr");
+
+            const codeCell = document.createElement("td");
+            codeCell.textContent = book.code;
+
+            const nameCell = document.createElement("td");
+            nameCell.textContent = book.name;
+
+            const authorCell = document.createElement("td");
+            authorCell.textContent = book.author;
+
+            const actionCell = document.createElement("td");
+            const borrowButton = document.createElement("button");
+            borrowButton.textContent = "Borrow";
+            borrowButton.classList.add("borrow-button");
+            borrowButton.onclick = function() {
+                borrowBook(book.name);
+            };
+            actionCell.appendChild(borrowButton);
+
+            row.appendChild(codeCell);
+            row.appendChild(nameCell);
+            row.appendChild(authorCell);
+            row.appendChild(actionCell);
+
+            tableBody.appendChild(row);
+        });
+    }
+
+    // Call renderBooks function when the page loads
+    document.addEventListener("DOMContentLoaded", renderBooks);
+
+    // Search functionality
+    const searchButton = document.getElementById("searchBtn");
+    const searchInput = document.getElementById("searchInput");
+
+    searchButton.addEventListener("click", function() {
+        const searchQuery = searchInput.value.toLowerCase();
+
+        // Filter books based on the search query
+        const filteredBooks = books.CSE.filter(book => {
+            return (
+                book.code.toLowerCase().includes(searchQuery) ||
+                book.name.toLowerCase().includes(searchQuery) ||
+                book.author.toLowerCase().includes(searchQuery)
+            );
+        });
+
+        // Update the table with filtered books
+        const tableBody = document.getElementById("bookTableBody");
+        tableBody.innerHTML = "";
+
+        filteredBooks.forEach(book => {
+            const row = document.createElement("tr");
+
+            const codeCell = document.createElement("td");
+            codeCell.textContent = book.code;
+
+            const nameCell = document.createElement("td");
+            nameCell.textContent = book.name;
+
+            const authorCell = document.createElement("td");
+            authorCell.textContent = book.author;
+
+            const actionCell = document.createElement("td");
+            const borrowButton = document.createElement("button");
+            borrowButton.textContent = "Borrow";
+            borrowButton.classList.add("borrow-button");
+            borrowButton.onclick = function() {
+                borrowBook(book.name);
+            };
+            actionCell.appendChild(borrowButton);
+
+            row.appendChild(codeCell);
+            row.appendChild(nameCell);
+            row.appendChild(authorCell);
+            row.appendChild(actionCell);
+
+            tableBody.appendChild(row);
+        });
+    });
+</script>
 </body>
 </html>

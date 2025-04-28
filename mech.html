@@ -9,7 +9,6 @@
 </head>
 <body>
 
-
 <h1 class="main-heading">View All Books</h1>
 
 <div class="branch-container">
@@ -23,7 +22,6 @@
         </div>
     </a>
 </div>
-   
 
 <div class="search-container">
     <input type="text" id="searchInput" placeholder="Search by Book Code, Name, or Author" />
@@ -47,5 +45,142 @@
 </div>
 
 <script src="js/books.js"></script>
+<script>
+    const books = {
+    Mechanical: [
+        { code: "ME101", name: "Thermodynamics", author: "Cengel" },
+        { code: "ME102", name: "Fluid Mechanics", author: "Frank White" },
+        { code: "ME103", name: "Manufacturing Technology", author: "R.K. Jain" },
+        { code: "ME104", name: "Fluid Mechanics & Machine", author: "S. K. Som" },
+        { code: "ME105", name: "Thermal Engineering", author: "P.L. Ballaney" },
+        { code: "ME106", name: "Theory of Machine", author: "R.S. Khurmi" },
+        { code: "ME107", name: "Theory of Machine", author: "J.S. Brar" },
+        { code: "ME108", name: "Adv. Manufacturing Technology", author: "B. S. Raghuwanshi" },
+        { code: "ME109", name: "Metrology & Quality Control", author: "R.K. Jain" },
+        { code: "ME110", name: "Design of Machine Elements", author: "V.B. Bhandari" },
+        { code: "ME111", name: "Heat and Mass Transfer", author: "J.P. Holman" },
+        { code: "ME112", name: "Engineering Mechanics", author: "R.K. Bansal" },
+        { code: "ME113", name: "Mechanical Vibrations", author: "Singiresu S. Rao" },
+        { code: "ME114", name: "IC Engine", author: "G. B. Stringer" },
+        { code: "ME115", name: "Refrigeration and Air Conditioning", author: "Arora" },
+        { code: "ME116", name: "Manufacturing Processes", author: "S. K. Hajra" },
+        { code: "ME117", name: "Applied Thermodynamics", author: "M.L. Mathur" },
+        { code: "ME118", name: "Engineering Materials", author: "R.K. Rajput" },
+        { code: "ME119", name: "Machine Design", author: "N. C. Pandya" },
+        { code: "ME120", name: "Fluid Power Engineering", author: "Pneumatic and Hydraulic" },
+        { code: "ME121", name: "Control Systems Engineering", author: "N. Nise" },
+        { code: "ME122", name: "Production Planning and Control", author: "K. Aswathappa" },
+        { code: "ME123", name: "Internal Combustion Engines", author: "V. Ganesan" },
+        { code: "ME124", name: "Dynamics of Machinery", author: "J.S. Brar" },
+        { code: "ME125", name: "Strength of Materials", author: "R.K. Bansal" },
+        { code: "ME126", name: "Finite Element Analysis", author: "T. R. Chandrupatla" },
+        { code: "ME127", name: "Gas Turbines", author: "V. Ganesan" },
+        { code: "ME128", name: "Nanotechnology in Engineering", author: "C. P. Wong" },
+        { code: "ME129", name: "Engineering Fluid Mechanics", author: "Bansal" },
+        { code: "ME130", name: "Materials Science and Engineering", author: "William D. Callister" },
+        { code: "ME131", name: "Advanced Engineering Thermodynamics", author: "Adrian Bejan" }
+    ]
+};
+
+
+    function borrowBook(bookName) {
+        Swal.fire({
+            title: "Request Sent!",
+            text: `Your request to borrow the book "${bookName}" has been sent to the admin. Thank you!`,
+            icon: "success",
+            confirmButtonText: "OK"
+        });
+    }
+
+    function renderBooks() {
+        const tableBody = document.getElementById("bookTableBody");
+
+        // Clear existing content in the table
+        tableBody.innerHTML = "";
+
+        // Loop through books and create table rows
+        books.Mechanical.forEach(book => {
+            const row = document.createElement("tr");
+
+            const codeCell = document.createElement("td");
+            codeCell.textContent = book.code;
+
+            const nameCell = document.createElement("td");
+            nameCell.textContent = book.name;
+
+            const authorCell = document.createElement("td");
+            authorCell.textContent = book.author;
+
+            const actionCell = document.createElement("td");
+            const borrowButton = document.createElement("button");
+            borrowButton.textContent = "Borrow";
+            borrowButton.classList.add("borrow-button");
+            borrowButton.onclick = function() {
+                borrowBook(book.name);
+            };
+            actionCell.appendChild(borrowButton);
+
+            row.appendChild(codeCell);
+            row.appendChild(nameCell);
+            row.appendChild(authorCell);
+            row.appendChild(actionCell);
+
+            tableBody.appendChild(row);
+        });
+    }
+
+    // Call renderBooks function when the page loads
+    document.addEventListener("DOMContentLoaded", renderBooks);
+
+    // Search functionality
+    const searchButton = document.getElementById("searchBtn");
+    const searchInput = document.getElementById("searchInput");
+
+    searchButton.addEventListener("click", function() {
+        const searchQuery = searchInput.value.toLowerCase();
+
+        // Filter books based on the search query
+        const filteredBooks = books.Mechanical.filter(book => {
+            return (
+                book.code.toLowerCase().includes(searchQuery) ||
+                book.name.toLowerCase().includes(searchQuery) ||
+                book.author.toLowerCase().includes(searchQuery)
+            );
+        });
+
+        // Update the table with filtered books
+        const tableBody = document.getElementById("bookTableBody");
+        tableBody.innerHTML = "";
+
+        filteredBooks.forEach(book => {
+            const row = document.createElement("tr");
+
+            const codeCell = document.createElement("td");
+            codeCell.textContent = book.code;
+
+            const nameCell = document.createElement("td");
+            nameCell.textContent = book.name;
+
+            const authorCell = document.createElement("td");
+            authorCell.textContent = book.author;
+
+            const actionCell = document.createElement("td");
+            const borrowButton = document.createElement("button");
+            borrowButton.textContent = "Borrow";
+            borrowButton.classList.add("borrow-button");
+            borrowButton.onclick = function() {
+                borrowBook(book.name);
+            };
+            actionCell.appendChild(borrowButton);
+
+            row.appendChild(codeCell);
+            row.appendChild(nameCell);
+            row.appendChild(authorCell);
+            row.appendChild(actionCell);
+
+            tableBody.appendChild(row);
+        });
+    });
+</script>
 </body>
 </html>

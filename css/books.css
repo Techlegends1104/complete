@@ -275,6 +275,16 @@ body {
         padding: 10px 8px;
         min-width: 100px;
     }
+     .swal2-popup {
+        width: 80% !important; /* Set width to 80% of screen */
+        max-width: 400px; /* Set maximum width */
+        margin: auto; /* Center it horizontally */
+        padding: 20px; /* Add padding inside the popup */
+    }
+
+    .swal2-title, .swal2-content, .swal2-actions {
+        font-size: 16px !important; /* Ensure text is not too large */
+    }
 }
 
 /* Mobile (≤480px) */
@@ -321,3 +331,5 @@ body {
         border-radius: 5px;
     }
 }
+/* Custom SweetAlert2 Styles for Small Screens */
+
