@@ -1,10 +1,11 @@
 /* Body Styling */
 body {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: linear-gradient(to right, #3A89C9, #002B5B);
     min-height: 100%;
-    padding: 20px;
     color: white;
 }
 
@@ -21,6 +22,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     gap: 30px;
     margin-top: 20px;
 }
@@ -89,7 +91,7 @@ body {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
 }
 
-/* Animations */
+/* Fade In Animation */
 @keyframes fadeInUp {
     to {
         opacity: 1;
@@ -97,6 +99,7 @@ body {
     }
 }
 
+/* Border Animation */
 @keyframes borderAnimation {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -213,17 +216,50 @@ body {
     background-color: #0056b3;
 }
 
-/* Responsive Design */
+/* ------------------ RESPONSIVE DESIGN ------------------ */
 
 /* Tablet (≤768px) */
 @media (max-width: 768px) {
-    /* Make table scrollable */
+    .main-heading {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .branch-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 10px;
+        margin-right: 25px;
+    }
+
+    .branch-container a {
+        width: 90%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .branch-card {
+        width: 100%;
+        height: 180px;
+        padding: 20px;
+    }
+
+    #searchInput {
+        width: 80%;
+    }
+
+    .search-button {
+        width: 60%;
+        margin-top: 10px;
+        margin-left: 0;
+    }
+
     #bookTable {
         width: 100%;
         overflow-x: auto;
         display: block;
         -webkit-overflow-scrolling: touch;
-        table-layout: auto;
     }
 
     #bookTable th {
@@ -237,42 +273,37 @@ body {
     #bookTable th,
     #bookTable td {
         padding: 10px 8px;
-        word-break: break-word;
         min-width: 100px;
-    }
-    .branch-container{
-        max-width: 350px;
-        justify-content: center;
-        display: flex;
-        word-break: break-word;
-    }
-    .branch-card {
-        width: 90%;
-        padding: 20px;
-        margin: 10px auto;
-    }
-
-    #searchInput {
-        width: 80%;
-    }
-
-    .search-button {
-        width: 60%;
-        margin-top: 10px;
     }
 }
 
 /* Mobile (≤480px) */
 @media (max-width: 480px) {
     .main-heading {
-        font-size: 26px;
-        text-align: center;
+        font-size: 24px;
+    }
+
+    .branch-container a {
+        width: 95%;
+        max-width: 320px;
+    }
+
+    .branch-card {
+        height: 160px;
+        padding: 15px;
+    }
+
+    #searchInput {
+        width: 90%;
+    }
+
+    .search-button {
+        width: 50%;
+        margin-top: 8px;
     }
 
     #bookTable {
-        width: 90%;
-        overflow-x: auto;
-        display: block;
+        width: 95%;
     }
 
     #bookTable th,
@@ -280,19 +311,13 @@ body {
         padding: 8px 5px;
         min-width: 80px;
     }
-
-    .branch-card {
-        width: 95%;
-        padding: 15px;
-        margin: 8px auto;
-    }
-
-    #searchInput {
-        width: 90%;
-    }
-
-    .search-button {
-        width: 70%;
-        margin-top: 8px;
+    .back-button-container {
+        position: fixed; /* Fixed position at top */
+        top: 10px; /* 10px from the top */
+        left: 10px; /* 10px from the left */
+        z-index: 1000; /* Higher z-index to stay on top */
+        /* background-color: rgba(0, 0, 0, 0.6); Optional: translucent background */
+        padding: 10px;
+        border-radius: 5px;
     }
 }

@@ -206,7 +206,6 @@ function showBooks(branch) {
             <td>${book.name}</td>
             <td>${book.author}</td>
             <td><button class="borrow-button" onclick="borrowBook()">Borrow</button></td>
-
         </tr>`;
         tbody.innerHTML += row;
     });
